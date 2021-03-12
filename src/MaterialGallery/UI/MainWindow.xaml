@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Material Gallery" Height="600" Width="800">
     <Grid>
+        <TabControl x:Name="MainTabControl" Margin="0,0,0,500">
+            <TabItem Header="文件">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="查看">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="添加">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
