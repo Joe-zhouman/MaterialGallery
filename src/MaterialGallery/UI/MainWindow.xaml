@@ -4,19 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Material Gallery" Height="600" Width="800">
     <Grid>
-        <TabControl x:Name="MainTabControl" Margin="0,0,0,500">
-            <TabItem Header="文件">
+        <TabControl x:Name="MainTabControl">
+            <TabItem Header="搜索">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="查看">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="浏览" Height="19" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox x:Name="InfoGroupBox" Header="信息" Margin="10,120,550,300">
+                        <Grid>
+                            <Label x:Name="ChnNameLabel" Content="中文名" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top" Height="30" Width="200"></Label>
+                            <Label x:Name="EnNameLabel" Content="英文名" HorizontalAlignment="Left" Margin="6,35,0,0" VerticalAlignment="Top" Height="30" Width="200"></Label>
+                            <Label x:Name="ComponentLabel" Content="化学组分" HorizontalAlignment="Left" Margin="6,65,0,0" VerticalAlignment="Top" Height="30" Width="200"></Label>
+                        </Grid>
+                    </GroupBox>
+                    
+                    <GroupBox x:Name="PropGroupBox" Header="属性" Margin="10,250,550,240">
+                        <ComboBox x:Name="PropComboBox" HorizontalAlignment="Left" Margin="6,0,0,0" VerticalAlignment="Center" Width="120"/>
+                    </GroupBox>
+                    <GroupBox x:Name="OriginGroupBox" Header = "来源" Margin="10,315,550,175">
+                        <Grid>
+                            <ComboBox x:Name="OriginComboBox" HorizontalAlignment="Left" Margin="6,0,0,0" VerticalAlignment="Center" Width="120"/>
+                            <RadioButton x:Name="OriginButton" Content="" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Center"></RadioButton>
+                        </Grid>
+                    </GroupBox>
+                    
+                    
+                    <GroupBox x:Name="RemarkGroupBox" Header="附注" Margin="10,415,550,20">
+                        <RichTextBox x:Name="RemarkRichTextBox"></RichTextBox>
+                    </GroupBox>
+                    <GroupBox x:Name="ChartGroupBox" Header="图表" Margin="260,120,10,20">
+                        <lvc:CartesianChart Series="{Binding SeriesCollection}">
+                            <lvc:CartesianChart.Resources>
+                                <Style TargetType="lvc:Separator">
+                                    <Setter Property="Stroke" Value="LightGray"></Setter>
+                                </Style>
+                            </lvc:CartesianChart.Resources>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:LogarithmicAxis LabelFormatter="{Binding Formatter}" 
+                                                     Base="{Binding Base}" >
+                                    <lvc:LogarithmicAxis.Separator>
+                                        <lvc:Separator StrokeThickness="1" IsEnabled="True"></lvc:Separator>
+                                    </lvc:LogarithmicAxis.Separator>
+                                </lvc:LogarithmicAxis>
+                            </lvc:CartesianChart.AxisX>
+                        </lvc:CartesianChart>
+                    </GroupBox>
+                    <Rectangle HorizontalAlignment="Center" Height="100" Stroke="Black" VerticalAlignment="Top" Width="794" RenderTransformOrigin="0.5,0.5">
+                    </Rectangle>
+
+                </Grid>
             </TabItem>
             <TabItem Header="添加">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+
         </TabControl>
 
     </Grid>
